@@ -20,7 +20,8 @@ from attrdict import AttrDict
 from PIL import Image
 
 sys.path.append('..')
-from api import api_utils, depth_completion_api
+from api import utils as api_utils 
+from api import depth_completion_api
 from realsense import camera
 
 
@@ -139,7 +140,8 @@ if __name__ == '__main__':
                                       np.zeros(color_img.shape, dtype=color_img.dtype)), 1)
         grid_image = np.concatenate((grid_image1, grid_image2), 0)
 
-        cv2.imshow('Live Demo', grid_image)
+        cv2.namedWindow('Live Demo',cv2.WINDOW_NORMAL)
+        cv2.imshow('Live Demo', filtered_output_depth_mapped)
         keypress = cv2.waitKey(10) & 0xFF
         if keypress == ord('q'):
             break
